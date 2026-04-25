@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Oracle</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Анимированная девушка-оракул -->
+    <aside class="muse" aria-hidden="true">
+      <svg class="muse-svg" viewBox="0 0 160 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="skinGrad" cx="50%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#fde8d0"/>
+            <stop offset="100%" stop-color="#f0c8a0"/>
+          </radialGradient>
+          <radialGradient id="dressGrad" cx="30%" cy="20%" r="80%">
+            <stop offset="0%" stop-color="#e879f9"/>
+            <stop offset="50%" stop-color="#c026d3"/>
+            <stop offset="100%" stop-color="#7e22ce"/>
+          </radialGradient>
+          <radialGradient id="hairGrad" cx="50%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#4a1a6e"/>
+            <stop offset="100%" stop-color="#1e0a3c"/>
+          </radialGradient>
+          <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <ellipse cx="80" cy="240" rx="55" ry="18" fill="rgba(192,38,211,0.22)" filter="url(#glow)"/>
+
+        <path d="M42 180 Q30 230 28 300 Q80 315 132 300 Q130 230 118 180 Q100 195 80 195 Q60 195 42 180Z"
+              fill="url(#dressGrad)" filter="url(#softGlow)"/>
+        <circle cx="60" cy="210" r="2" fill="rgba(255,255,255,0.7)"/>
+        <circle cx="90" cy="220" r="1.5" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="75" cy="240" r="2.5" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="105" cy="235" r="2" fill="rgba(255,255,255,0.65)"/>
+        <circle cx="55" cy="255" r="1.5" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="115" cy="260" r="2" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="80" cy="270" r="1.5" fill="rgba(255,255,255,0.7)"/>
+        <circle cx="68" cy="285" r="2" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="100" cy="280" r="1.5" fill="rgba(255,255,255,0.6)"/>
+        <path d="M28 290 Q50 275 80 285 Q110 275 132 290 Q110 310 80 315 Q50 310 28 290Z"
+              fill="rgba(192,38,211,0.55)"/>
+
+        <rect x="62" y="160" width="36" height="28" rx="10" fill="url(#skinGrad)"/>
+        <path d="M62 168 Q44 150 36 130 Q38 126 42 128 Q48 145 64 162Z" fill="url(#skinGrad)"/>
+        <path d="M98 168 Q112 185 116 200 Q112 204 108 202 Q106 188 94 172Z" fill="url(#skinGrad)"/>
+
+        <polygon points="36,118 42,106 48,118 42,128" fill="rgba(167,139,250,0.9)" filter="url(#glow)"/>
+        <polygon points="36,118 42,106 42,118" fill="rgba(255,255,255,0.5)"/>
+        <polygon points="36,118 42,128 42,118" fill="rgba(109,40,217,0.6)"/>
+
+        <rect x="72" y="148" width="16" height="18" rx="6" fill="url(#skinGrad)"/>
+        <ellipse cx="80" cy="130" rx="28" ry="32" fill="url(#skinGrad)" filter="url(#softGlow)"/>
+
+        <path d="M52 115 Q50 85 55 65 Q65 45 80 42 Q95 45 105 65 Q110 85 108 115" fill="url(#hairGrad)"/>
+        <path d="M52 115 Q40 150 38 185 Q50 190 55 175 Q58 148 60 130Z" fill="url(#hairGrad)"/>
+        <path d="M108 115 Q120 150 122 185 Q110 190 105 175 Q102 148 100 130Z" fill="url(#hairGrad)"/>
+
+        <!-- Левый глаз -->
+        <ellipse cx="70" cy="128" rx="7" ry="8" fill="white"/>
+        <ellipse cx="70" cy="129" rx="5" ry="6" fill="#7c3aed"/>
+        <ellipse cx="70" cy="129" rx="3" ry="3.5" fill="#1e0a3c"/>
+        <circle cx="72" cy="127" r="1.5" fill="white"/>
+        <line x1="63" y1="121" x2="61" y2="118" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="66" y1="120" x2="65" y2="117" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="70" y1="120" x2="70" y2="117" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="74" y1="121" x2="75" y2="118" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="77" y1="122" x2="79" y2="120" stroke="#1e0a3c" stroke-width="1.2"/>
+
+        <!-- Правый глаз (подмигивающий) -->
+        <ellipse class="eye-right" cx="90" cy="128" rx="7" ry="8" fill="white"/>
+        <ellipse class="eye-right-iris" cx="90" cy="129" rx="5" ry="6" fill="#7c3aed"/>
+        <ellipse class="eye-right-pupil" cx="90" cy="129" rx="3" ry="3.5" fill="#1e0a3c"/>
+        <circle class="eye-right-shine" cx="92" cy="127" r="1.5" fill="white"/>
+        <path class="wink-line" d="M83 128 Q90 133 97 128" stroke="#1e0a3c" stroke-width="2" fill="none" display="none"/>
+        <line x1="83" y1="121" x2="81" y2="118" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="86" y1="120" x2="85" y2="117" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="90" y1="120" x2="90" y2="117" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="94" y1="121" x2="95" y2="118" stroke="#1e0a3c" stroke-width="1.2"/>
+        <line x1="97" y1="122" x2="99" y2="120" stroke="#1e0a3c" stroke-width="1.2"/>
+
+        <path d="M63 119 Q70 115 77 118" stroke="#4a1a6e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M83 118 Q90 114 97 117" stroke="#4a1a6e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M78 135 Q80 140 82 135" stroke="rgba(180,120,80,0.5)" stroke-width="1.2" fill="none"/>
+        <path d="M72 145 Q80 152 88 145" stroke="#c2185b" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="70" cy="145" r="2" fill="rgba(220,100,120,0.35)"/>
+        <circle cx="90" cy="145" r="2" fill="rgba(220,100,120,0.35)"/>
+        <ellipse cx="64" cy="138" rx="7" ry="5" fill="rgba(255,100,130,0.2)"/>
+        <ellipse cx="96" cy="138" rx="7" ry="5" fill="rgba(255,100,130,0.2)"/>
+        <circle cx="52" cy="132" r="4" fill="rgba(167,139,250,0.9)" filter="url(#glow)"/>
+        <circle cx="108" cy="132" r="4" fill="rgba(167,139,250,0.9)" filter="url(#glow)"/>
+
+        <path d="M60 98 L65 88 L70 96 L75 82 L80 94 L85 80 L90 94 L95 86 L100 98"
+              stroke="rgba(251,191,36,0.9)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+        <circle cx="80" cy="82" r="4" fill="rgba(251,191,36,0.95)" filter="url(#glow)"/>
+        <circle cx="65" cy="89" r="3" fill="rgba(167,139,250,0.9)"/>
+        <circle cx="95" cy="87" r="3" fill="rgba(167,139,250,0.9)"/>
+
+        <path d="M55 108 Q58 88 68 75 Q74 68 80 66 Q86 68 92 75 Q102 88 105 108" fill="url(#hairGrad)"/>
+        <path d="M57 105 Q54 120 50 140" stroke="#6b21a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M103 105 Q106 120 110 138" stroke="#6b21a8" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </aside>
+
+    <main class="app-shell">
+      <section class="screen active" id="intro-screen">
+        <h1>✦ Content Oracle ✦</h1>
+        <p class="sub">Метафорический оракул для контента, маркетинга и AI</p>
+        <textarea id="question-input" placeholder="Например: Какую тему развивать в Telegram?"></textarea>
+        <div class="prompts" id="prompt-list"></div>
+        <button class="btn-primary" id="start-btn">Начать расклад</button>
+      </section>
+
+      <section class="screen" id="deck-screen">
+        <h2>Сосредоточьтесь на вопросе</h2>
+        <p class="sub">Нажмите на колоду и вытяните 3 карты</p>
+        <button class="deck" id="deck-btn" aria-label="Открыть колоду">
+          <span></span><span></span><span></span>
+          <em>✦ Открыть расклад ✦</em>
+        </button>
+      </section>
+
+      <section class="screen" id="reveal-screen">
+        <h2>Раскрытие карт</h2>
+        <p class="sub" id="reveal-tip">Нажимайте на закрытые карты по очереди</p>
+        <div class="cards-grid" id="cards-grid"></div>
+        <button class="btn-primary hidden" id="to-result-btn">Перейти к толкованию →</button>
+      </section>
+
+      <section class="screen" id="result-screen">
+        <h2>Ваш расклад готов</h2>
+        <p class="sub" id="result-question"></p>
+        <div id="result-list"></div>
+        <div class="result-block" id="practical-block"></div>
+        <div class="actions">
+          <button class="btn-primary" id="restart-btn">✦ Новый расклад</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
