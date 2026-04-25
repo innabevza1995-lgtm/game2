@@ -11,9 +11,8 @@ body {
   min-height: 100vh;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #f5f1ff;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(126,68,255,0.38), transparent 35%),
-    radial-gradient(circle at 85% 20%, rgba(79,54,168,0.3), transparent 30%),
+  background: radial-gradient(circle at 20% 10%, rgba(126, 68, 255, 0.35), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(79, 54, 168, 0.28), transparent 30%),
     linear-gradient(170deg, #04010a, #160f2b 45%, #0c081a);
   overflow-x: hidden;
 }
@@ -22,8 +21,8 @@ body {
   position: fixed;
   inset: auto 0 0;
   height: 34vh;
-  background: radial-gradient(ellipse at center, rgba(134,92,255,0.38), transparent 70%);
-  filter: blur(22px);
+  background: radial-gradient(ellipse at center, rgba(134, 92, 255, 0.35), transparent 70%);
+  filter: blur(20px);
   animation: fog 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -33,11 +32,11 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(237,233,254,0.8);
-  animation: floatUp 5s ease-in-out infinite;
+  background: rgba(237, 233, 254, 0.75);
+  animation: float 4s ease-in-out infinite;
 }
 
-/* ========== Персонаж-девушка ========== */
+/* ========= Девушка-оракул ========= */
 .muse {
   position: fixed;
   right: -12px;
@@ -53,25 +52,35 @@ body {
 .muse-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 18px rgba(192,38,211,0.4));
+  filter: drop-shadow(0 0 18px rgba(192, 38, 211, 0.4));
+}
+
+@media (max-width: 860px) {
+  .muse {
+    width: 130px;
+    height: 260px;
+    right: -10px;
+  }
 }
 
 @media (max-width: 640px) {
   .muse {
-    width: 110px;
-    height: 220px;
+    width: 100px;
+    height: 200px;
     right: -8px;
+    bottom: 0;
+    opacity: 0.9;
   }
 }
 
-/* ========== Layout ========== */
+/* ========= Layout ========= */
 .app-shell {
-  width: min(520px, 100%);
+  width: min(560px, 100%);
   margin: 0 auto;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 20px 16px 20px;
+  padding: 20px 16px;
   position: relative;
   z-index: 2;
 }
@@ -79,72 +88,67 @@ body {
 .screen {
   display: none;
   width: 100%;
-  background: linear-gradient(140deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 28px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 26px;
   backdrop-filter: blur(14px);
-  padding: 22px 18px 18px;
+  padding: 18px;
 }
 
 .screen.active {
   display: block;
 }
 
-h1 {
-  margin: 0 0 4px;
-  text-align: center;
-  font-size: 28px;
-  background: linear-gradient(90deg, #e879f9, #a855f7, #60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.04em;
-}
-
-h2 {
+h1, h2 {
   margin: 0;
   text-align: center;
-  font-size: 20px;
 }
 
 .sub {
   text-align: center;
-  opacity: 0.82;
-  margin: 6px 0 14px;
-  font-size: 14px;
+  opacity: 0.85;
+  margin: 8px 0 14px;
 }
 
 textarea {
   width: 100%;
-  min-height: 100px;
+  min-height: 110px;
   border-radius: 16px;
-  border: 1px solid rgba(221,214,254,0.35);
-  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(221, 214, 254, 0.35);
+  background: rgba(0, 0, 0, 0.3);
   color: #f5f1ff;
-  padding: 12px;
-  font-size: 15px;
+  padding: 10px;
   resize: none;
-  outline: none;
   font-family: inherit;
+  font-size: 15px;
+  outline: none;
 }
 
 textarea:focus {
-  border-color: rgba(167,139,250,0.6);
-  box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.input-help {
+  margin: 8px 2px 0;
+  color: rgba(245, 241, 255, 0.65);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .prompts {
   display: grid;
   gap: 8px;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 .prompts button {
-  border: 1px solid rgba(196,181,253,0.25);
-  background: rgba(167,139,250,0.08);
+  border: 1px solid rgba(196, 181, 253, 0.25);
+  background: rgba(167, 139, 250, 0.08);
   color: #f5f1ff;
   border-radius: 12px;
-  padding: 9px 12px;
+  padding: 9px;
   text-align: left;
   cursor: pointer;
   font-size: 14px;
@@ -152,35 +156,41 @@ textarea:focus {
 }
 
 .prompts button:hover {
-  background: rgba(167,139,250,0.18);
+  background: rgba(167, 139, 250, 0.18);
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   width: 100%;
   border: 0;
   border-radius: 16px;
-  padding: 14px;
+  padding: 12px;
   margin-top: 12px;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 15px;
+}
+
+.btn-primary {
   background: linear-gradient(90deg, #7c3aed, #a855f7, #d946ef);
-  box-shadow: 0 4px 24px rgba(139,92,246,0.4);
-  transition: transform 0.15s, box-shadow 0.15s;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.38);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(139,92,246,0.55);
+  box-shadow: 0 6px 28px rgba(139, 92, 246, 0.55);
 }
 
-/* ========== Колода ========== */
+.btn-secondary {
+  border: 1px solid rgba(221, 214, 254, 0.35);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ========= Колода ========= */
 .deck {
-  margin: 24px auto 8px;
-  width: 168px;
-  height: 252px;
+  margin: 12px auto 4px;
+  width: 180px;
+  height: 250px;
   background: transparent;
   border: 0;
   position: relative;
@@ -192,48 +202,44 @@ textarea:focus {
   position: absolute;
   inset: 0;
   border-radius: 22px;
-  border: 1px solid rgba(221,214,254,0.35);
-  background: linear-gradient(145deg, rgba(76,29,149,0.75), rgba(17,24,39,0.88));
-  transition: transform 0.3s;
+  border: 1px solid rgba(221, 214, 254, 0.35);
+  background: linear-gradient(145deg, rgba(76, 29, 149, 0.7), rgba(17, 24, 39, 0.85));
+  animation: float 3s ease-in-out infinite;
 }
 
 .deck span:nth-child(2) { transform: translate(8px, -8px); }
 .deck span:nth-child(3) { transform: translate(16px, -16px); }
 
-.deck:hover span:nth-child(2) { transform: translate(10px, -10px); }
-.deck:hover span:nth-child(3) { transform: translate(20px, -20px); }
-
 .deck em {
   position: absolute;
-  inset: 20px;
+  inset: 24px;
   border-radius: 18px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(237,233,254,0.3);
+  border: 1px solid rgba(237, 233, 254, 0.3);
   font-style: normal;
-  font-size: 13px;
   letter-spacing: 0.08em;
-  color: rgba(237,233,254,0.85);
   animation: pulse 2.5s ease-in-out infinite;
 }
 
-/* ========== Карты ========== */
+/* ========= Карты ========= */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 156px);
+  grid-template-columns: repeat(2, minmax(0, 168px));
   justify-content: center;
   gap: 14px 16px;
-  margin: 10px 0;
+  padding-bottom: 2px;
 }
 
 .card {
-  width: 156px;
-  height: 260px;
+  width: 168px;
+  height: 284px;
   perspective: 1200px;
   border: 0;
   background: transparent;
   padding: 0;
   cursor: pointer;
+  transform-style: preserve-3d;
   position: relative;
 }
 
@@ -244,7 +250,7 @@ textarea:focus {
 
 .card:disabled {
   cursor: default;
-  opacity: 0.7;
+  opacity: 0.86;
 }
 
 .card-inner {
@@ -252,33 +258,48 @@ textarea:focus {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 16px 22px rgba(8,6,18,0.65));
+  transition: transform 0.72s ease, filter 0.3s ease;
+  filter: drop-shadow(0 18px 22px rgba(8, 6, 18, 0.6));
 }
 
 .card:not(:disabled):hover .card-inner {
-  filter: drop-shadow(0 20px 28px rgba(109,40,217,0.55));
+  filter: drop-shadow(0 24px 24px rgba(109, 40, 217, 0.5));
 }
 
+/* Карта открыта — убираем трансформ, показываем лицо через opacity */
 .card.open .card-inner {
-  transform: rotateY(180deg);
+  transform: none;
+}
+
+.card.open .card-back {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card.open .card-front {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  z-index: 2;
 }
 
 .card-face {
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  border: 1px solid rgba(221,214,254,0.28);
+  border: 1px solid rgba(221, 214, 254, 0.28);
   backface-visibility: hidden;
   overflow: hidden;
+  transition: opacity 0.28s ease;
 }
 
-/* === Рубашка карты === */
+/* === Рубашка === */
 .card-back {
   display: grid;
   place-items: center;
-  background: linear-gradient(150deg, rgba(81,45,168,0.98), rgba(30,27,75,0.98));
-  box-shadow: inset 0 0 0 1px rgba(221,214,254,0.18), inset 0 0 48px rgba(139,92,246,0.3);
+  background: linear-gradient(150deg, rgba(81, 45, 168, 0.96), rgba(30, 27, 75, 0.96));
+  box-shadow: inset 0 0 0 1px rgba(221, 214, 254, 0.2), inset 0 0 45px rgba(139, 92, 246, 0.26);
+  padding: 10px;
 }
 
 .card-back::before {
@@ -286,10 +307,9 @@ textarea:focus {
   position: absolute;
   inset: 12px;
   border-radius: 14px;
-  border: 1px solid rgba(237,233,254,0.22);
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 38%),
-    radial-gradient(circle at 70% 80%, rgba(196,181,253,0.18), transparent 36%);
+  border: 1px solid rgba(237, 233, 254, 0.25);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2), transparent 38%),
+    radial-gradient(circle at 70% 80%, rgba(196, 181, 253, 0.2), transparent 36%);
 }
 
 .card-back::after {
@@ -297,73 +317,52 @@ textarea:focus {
   position: absolute;
   inset: -40% -80% auto;
   height: 40%;
-  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.38) 45%, transparent 80%);
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.4) 45%, transparent 80%);
   transform: rotate(12deg);
   animation: shine 3.4s linear infinite;
 }
 
 .card-back strong {
-  font-size: 36px;
-  opacity: 0.55;
-  position: relative;
-  z-index: 1;
+  font-size: 22px;
+  color: rgba(226, 232, 240, 0.62);
+  font-weight: 500;
 }
 
-/* === Лицевая сторона карты === */
+/* === Лицо карты === */
 .card-front {
   transform: rotateY(180deg);
+  opacity: 0;
+  background: linear-gradient(165deg, rgba(30, 27, 75, 0.95), rgba(8, 6, 18, 0.95));
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.mini {
+  font-size: 11px;
+  opacity: 0.78;
+  letter-spacing: 0.1em;
 }
 
 /* === Сцена (картинка) === */
 .scene {
-  flex: 1;
-  position: relative;
+  height: 126px;
+  border: 1px solid rgba(221, 214, 254, 0.25);
+  border-radius: 12px;
+  background: radial-gradient(circle at 25% 30%, rgba(192, 132, 252, 0.36), transparent 40%),
+    linear-gradient(130deg, rgba(236, 72, 153, 0.12), rgba(59, 130, 246, 0.12));
+  animation: pulse 2.8s ease-in-out infinite;
   overflow: hidden;
-  border-radius: 20px 20px 0 0;
+  position: relative;
 }
 
-/* Красивые уникальные фоны для каждой карты */
-.scene-lighthouse { background: linear-gradient(160deg, #0f2460 0%, #1a4f8a 35%, #0d3d6e 65%, #041630 100%); }
-.scene-labyrinth  { background: linear-gradient(160deg, #2d0b5e 0%, #5b1a8a 40%, #3d1265 70%, #1a0733 100%); }
-.scene-mirror     { background: linear-gradient(160deg, #1e1060 0%, #3b2fa0 40%, #6b21a8 70%, #0f0830 100%); }
-.scene-spark      { background: linear-gradient(160deg, #4a1a00 0%, #c2410c 35%, #ea580c 60%, #7c2d12 100%); }
-.scene-key        { background: linear-gradient(160deg, #422006 0%, #92400e 40%, #d97706 65%, #1c1008 100%); }
-.scene-gate       { background: linear-gradient(160deg, #0f1e4a 0%, #1e3a8a 35%, #6d28d9 65%, #0a0f28 100%); }
-.scene-river      { background: linear-gradient(160deg, #052e2e 0%, #065f6f 40%, #0891b2 65%, #022020 100%); }
-.scene-comet      { background: linear-gradient(160deg, #0a0020 0%, #4c1d95 35%, #7c3aed 55%, #ec4899 80%, #0a0020 100%); }
-.scene-tower      { background: linear-gradient(160deg, #1c1917 0%, #44403c 40%, #78716c 65%, #0c0a09 100%); }
-.scene-mask       { background: linear-gradient(160deg, #3b0f2d 0%, #9d174d 38%, #db2777 60%, #4a044e 100%); }
-.scene-moon       { background: linear-gradient(160deg, #0a0a1e 0%, #1e1b4b 35%, #312e81 55%, #6d28d9 80%, #0a0010 100%); }
-.scene-bridge     { background: linear-gradient(160deg, #042f2e 0%, #0f766e 40%, #06b6d4 65%, #5b21b6 100%); }
-
-/* Декоративные элементы поверх фона каждой карты */
-.scene::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-}
-
-/* Символы/иллюстрации на картах */
-.scene-art {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 64px;
-  filter: drop-shadow(0 0 16px rgba(255,255,255,0.4));
+.scene img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.18) contrast(1.05);
   animation: artFloat 4s ease-in-out infinite;
-  opacity: 0.9;
-}
-
-.scene-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.12) 0%, transparent 65%);
-  pointer-events: none;
 }
 
 .scene-title {
@@ -371,88 +370,107 @@ textarea:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 28px 10px 10px;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-  color: rgba(255,255,255,0.97);
-  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-  text-align: center;
-}
-
-.card-info {
   padding: 10px 10px 8px;
-  background: rgba(8,6,18,0.92);
-  border-radius: 0 0 20px 20px;
-  border-top: 1px solid rgba(221,214,254,0.15);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(7, 4, 15, 0.92));
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-.card-role {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  opacity: 0.7;
-  text-transform: uppercase;
-  margin-bottom: 3px;
-}
-
-.card-interp {
-  font-size: 12px;
-  line-height: 1.35;
-  opacity: 0.9;
-}
+/* Фоны для каждой карты — fallback если картинка не загрузилась */
+.scene-lighthouse { background: linear-gradient(170deg, rgba(30, 64, 175, 0.5), rgba(15, 23, 42, 0.8)); }
+.scene-labyrinth  { background: linear-gradient(170deg, rgba(88, 28, 135, 0.5), rgba(30, 27, 75, 0.7)); }
+.scene-mirror     { background: linear-gradient(170deg, rgba(190, 24, 93, 0.4), rgba(37, 99, 235, 0.5)); }
+.scene-spark      { background: linear-gradient(170deg, rgba(194, 65, 12, 0.5), rgba(234, 88, 12, 0.6)); }
+.scene-key        { background: linear-gradient(170deg, rgba(245, 158, 11, 0.4), rgba(67, 56, 202, 0.5)); }
+.scene-gate       { background: linear-gradient(170deg, rgba(236, 72, 153, 0.4), rgba(79, 70, 229, 0.5)); }
+.scene-river      { background: linear-gradient(170deg, rgba(14, 116, 144, 0.55), rgba(30, 58, 138, 0.55)); }
+.scene-comet      { background: linear-gradient(170deg, rgba(251, 146, 60, 0.45), rgba(109, 40, 217, 0.5)); }
+.scene-tower      { background: linear-gradient(170deg, rgba(148, 163, 184, 0.4), rgba(30, 27, 75, 0.6)); }
+.scene-mask       { background: linear-gradient(170deg, rgba(244, 114, 182, 0.45), rgba(59, 130, 246, 0.4)); }
+.scene-moon       { background: linear-gradient(170deg, rgba(99, 102, 241, 0.5), rgba(15, 23, 42, 0.65)); }
+.scene-bridge     { background: linear-gradient(170deg, rgba(6, 182, 212, 0.45), rgba(126, 34, 206, 0.4)); }
 
 .reveal-hint {
-  margin: 6px 0 0;
+  margin-top: 8px;
+  opacity: 0.78;
   text-align: center;
-  font-size: 11px;
-  opacity: 0.6;
-  letter-spacing: 0.05em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
 }
 
-/* ========== Результат ========== */
+/* ========= Результат ========= */
+.hidden { display: none; }
+
 .result-item {
-  border: 1px solid rgba(221,214,254,0.22);
+  border: 1px solid rgba(221, 214, 254, 0.25);
   border-radius: 14px;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.24);
   padding: 12px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
-.mini {
-  font-size: 10px;
-  opacity: 0.7;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
+.result-item strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 17px;
+}
+
+.result-item p,
+.practice-item p {
+  margin: 8px 0 0;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
 .result-block {
-  margin-top: 12px;
+  margin-top: 10px;
   border-radius: 14px;
-  border: 1px solid rgba(221,214,254,0.22);
-  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(221, 214, 254, 0.25);
+  background: rgba(167, 139, 250, 0.12);
   padding: 12px;
 }
 
+.practice-item {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(221, 214, 254, 0.18);
+}
+
+.practice-item:first-of-type {
+  border-top: 0;
+  padding-top: 6px;
+}
+
+.status-note {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: #ddd6fe;
+  text-align: center;
+  font-size: 13px;
+}
+
 .actions {
-  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
 }
 
-.hidden {
-  display: none;
-}
-
-/* ========== Анимации ========== */
+/* ========= Анимации ========= */
 @keyframes museSway {
   0%, 100% { transform: rotate(-1.5deg) translateY(0); }
   50%       { transform: rotate(1.5deg) translateY(-6px); }
 }
 
-@keyframes floatUp {
-  0%   { transform: translateY(0) scale(1); opacity: 0.7; }
-  50%  { transform: translateY(-14px) scale(1.1); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.75; }
+  50%       { opacity: 1; }
 }
 
 @keyframes fog {
@@ -460,22 +478,12 @@ textarea:focus {
   100% { transform: translateX(2%); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50%       { opacity: 1; }
-}
-
 @keyframes shine {
   from { transform: translateY(0) rotate(12deg); }
-  to   { transform: translateY(340%) rotate(12deg); }
+  to   { transform: translateY(320%) rotate(12deg); }
 }
 
 @keyframes artFloat {
   0%, 100% { transform: scale(1) translateY(0); }
-  50%       { transform: scale(1.04) translateY(-3px); }
-}
-
-@keyframes wink {
-  0%, 85%, 100% { transform: scaleY(1); }
-  90%, 95%      { transform: scaleY(0.05); }
+  50%       { transform: scale(1.03) translateY(-2px); }
 }
